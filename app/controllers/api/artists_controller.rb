@@ -2,14 +2,19 @@ class Api::ArtistsController < ApplicationController
 
     def index
         @artists = Artist.all
-        render json: @artists
+        render json:{
+          artists: @artists
+    }
       end
-
-def show
-    @artist = Artist.find(params[:id])
-
-    render json: @artist
-end
+   
+      def show
+        @artist = Artist.find(params[:id])
+        @songs = @artist.songs
+        render json: {
+          artist: @artist,
+          songs: @songs
+        }
+      end
 
 def create
     @artist = Artist.create!(artist_params)

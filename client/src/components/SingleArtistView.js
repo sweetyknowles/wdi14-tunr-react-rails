@@ -1,39 +1,33 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import axios from 'axios'
 
 class SingleArtistView extends Component {
-    state = {
-    artists: []
-}
+  state = {
+    artist: {},
+    songs: []
+  }
 
-componentDidMount () {
+  componentDidMount () {
+    this.getSingleArtist()
+  }
 
-//inititiate API call to RAILS 
-// When succesfful, update the state
-}
-getAllArtists = async ()=> {
- const response = await axios.get('/api/artists')
- this.setState({artists: response.data.artists})
+  getSingleArtist = async () => {
+    const artistId = this.props.match.params.id
+    const res = await axios.get(`/api/artists/${artistId}`)
+    console.log(res.data)
+    this.setState({
+      artist: res.data.artist,
+      songs: res.data.songs
+    })
+  }
 
-}
-render() {
+  render () {
     return (
-        <div>
-          
-            {this.state.artists.map(artist =>{
-                return (
-                    <div key={artist.id}>
-                    {artist.name}
-                    </div>
-                )
-            })}
-        </div>
-    );
+      <div>
+        
+      </div>
+    )
+  }
 }
-}
-export default SingleArtistView;
 
-
-//get all artists from the rails api 
-// want to show all the artists once its fetched
-//  users soudl be able to click on the artist and visit the single user artist page. 
+export default SingleArtistView
