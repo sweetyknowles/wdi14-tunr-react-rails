@@ -1,9 +1,9 @@
 import React, {Component} from "react";
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 //import Artist from "./components/Artist";
-import ArtistList from "./components/Artist";
-import SingleArtistView from "./components/SingleArtist";
-import NavBar from "./components/NaveBAr";
+import ArtistList from "./components/ArtistList";
+import SingleArtistView from "./components/SingleArtistView";
+import NavBar from "./components/NavBar";
 import "./App.css";
 
 class App extends Component {
